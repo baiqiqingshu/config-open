@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: eureka-consumer
+
+server:
+  port: 8073
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8071/eureka,http://127.0.0.1:8070/eureka
+
+eureka-provider:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+ribbon:
+  ConnectTimeout: 1000 # 连接时间超时
+  ReadTimeout: 3000 # 逻辑处理超时
+
+
+logging:
+  level:
+    com.longw: debug
+
+feign:
+  hystrix:
+    enabled: true
+
+
+aprop: longw
